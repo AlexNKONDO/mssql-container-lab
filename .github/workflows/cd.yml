@@ -10,10 +10,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: ##To fill##
+        uses: actions/checkout@v4
 
       - name: Log in to the Container registry
-        uses: ##To fill##
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push Docker image
-        uses: ##To fill##
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          build-args: |
+            SA_PASSWORD=${{ secrets.SA_PASSWORD }}
+          tags: ghcr.io/${{ github.repository_owner }}/mssql:2019-latest
