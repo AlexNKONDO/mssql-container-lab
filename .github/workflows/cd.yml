@@ -1,0 +1,19 @@
+---
+name: Create and Publish
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: ##To fill##
+
+      - name: Log in to the Container registry
+        uses: ##To fill##
+
+      - name: Build and push Docker image
+        uses: ##To fill##

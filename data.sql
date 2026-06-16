@@ -1,0 +1,12 @@
+CREATE DATABASE INTERVIEW_TEST;
+GO
+USE [INTERVIEW_TEST]
+GO
+
+CREATE TABLE [dbo].[TABLE1](
+    [ID] [nvarchar](45) NOT NULL,
+    [SERVICE_TYPE] [nvarchar](64) NOT NULL,
+    [CONFIG] [nvarchar](max) NULL,
+    [IS_ENABLED] [bit] NOT NULL,
+) ON [PRIMARY]
+GO
