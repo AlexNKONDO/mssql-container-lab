@@ -3,6 +3,15 @@ name: Create and Publish
 
 on:
   workflow_dispatch:
+    inputs:
+      mssql_version:
+        description: 'SQL Server version'
+        required: true
+        default: '2019'
+        type: choice
+        options:
+          - '2017'
+          - '2019'
 
 jobs:
   build-and-push-image:
@@ -29,4 +38,5 @@ jobs:
           push: true
           build-args: |
             SA_PASSWORD=${{ secrets.SA_PASSWORD }}
-          tags: ghcr.io/${{ env.REPO_OWNER }}/mssql:2019-latest
+            BUILD_FROM=mcr.microsoft.com/mssql/server:${{ inputs.mssql_version }}-latest
+          tags: ghcr.io/${{ env.REPO_OWNER }}/mssql:${{ inputs.mssql_version }}-latest
